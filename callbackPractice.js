@@ -24,6 +24,9 @@ and what you should write is the sayHi function that makes the code above work,
 
   // Code Here
 
+  var first = (arr, cb) => {
+    cb(arr[0]);
+  }
   
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
@@ -37,7 +40,9 @@ first(names, function(firstName){
 
   //Code Here
 
-
+var last = (arr, cb) => {
+  cb(arr[arr.length - 1])
+}
 
 last(names, function(lastName){
   console.log('The last name in names is ' + lastName);
@@ -50,7 +55,9 @@ last(names, function(lastName){
 
   //Code Here
 
-
+var multiply = (x, y, cb) => {
+  cb(x * y);
+}
 
 multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
@@ -64,7 +71,11 @@ multiply(4, 3, function(answer){
 
   //Code Here 
 
-
+var contains = (arr, name, cb) => {
+  for (i = 0; i < arr.length; i++){
+    arr[i] === name ? cb(true) : cb(false);
+  }
+}
 
 
 contains(names, 'Colt', function(result){
@@ -82,7 +93,9 @@ contains(names, 'Colt', function(result){
 
   //Code Here
 
-
+var uniq = (arr, cb) => {
+  return cb(Array.from(new Set(arr)));
+}
 
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
@@ -93,7 +106,11 @@ uniq(names, function(uniqArr){
 
     //Code Here 
 
-
+var each = (arr, cb) => {
+  for (i = 0; i < arr.length; i++) {
+    cb(arr[i], i);
+  }
+}
 
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
@@ -105,7 +122,13 @@ each(names, function(item, indice){
 // When the correct user object is found, invoke the callback with the user object as an argument.
 
 // Code here
-
+var getUserById = (arr, ided, cb) => {
+  cb(arr.map(function(e, i){
+    if (arr[i].id === ided) {
+      return cb(e);
+    }
+  }));
+}
 
 
 var users = [
